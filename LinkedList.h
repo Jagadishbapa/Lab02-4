@@ -55,19 +55,22 @@ public:
 	// post: the doubles in this List have been written to
 	//         outfile.
 	void print(ostream & outfile) const;
-
+	
+	int size() const; // ADDED FOR TASK 1
+	double sum() const; // ADDED FOR TASK 4
 
 	//*** Mutators ***
 
 	// post: x has been added as the first double in this
 	//         List.
 	void insertAsFirst(double x);
-
+	void insertAsLast(double x);  // ADDED FOR TASK 5
 	// pre:  this List is not empty.
 	// post: the first double in this List has been removed
 	//         from this List and has been returned.
 	double removeFirst();
-
+	
+	
 private:
 	//*** Inaccessible standard functions ***
 
@@ -78,11 +81,11 @@ private:
 	// post: a pointer to a copy of the linked structure
 	//         targeted by ptr has been returned.
 	static Node * clone(Node * ptr);
-
+	
 
 private:
 	Node * first_;
-
+	
 };
 
 

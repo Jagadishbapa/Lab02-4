@@ -48,6 +48,19 @@ int main()
 
 	cout << "End of code" << endl;
 
+  List foo;
+  foo.insertAsFirst(4.0);
+  foo.insertAsFirst(3.0);
+  foo.insertAsFirst(2.0);
+  foo.insertAsFirst(1.0);
+  cout << "foo list : " << foo << endl;
+  foo.insertAsLast(5.0);
+  foo.insertAsLast(6.0);
+  foo.insertAsLast(7.0);
+  cout << "foo list : " << foo << endl;
+  cout << foo.size();
+  cout << foo.sum();
+  system("pause");
 	return 0;
 }
 
