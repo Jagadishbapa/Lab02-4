@@ -1,4 +1,13 @@
 // LinkedList.h
+// Modified by Ben Howe
+// COSC 2030
+// September 29, 2018
+
+// Note: I implemented both stored and calculated variations of sum and size
+// just to make sure I could do it either way. 
+// This is based on comments made during lecture that indicated scenarios where either
+// approach could be valid based on real-life constraints and/or requirements.
+
 
 // tom bailey   0740  5 oct 2010
 // Declaration of the List class.
@@ -23,69 +32,71 @@ using std::ostream;
 class List
 {
 public:
-	//*** Standard functions ***
+  //*** Standard functions ***
 
-	// Default constructor
-	// post: this List is empty.
-	List();
+  // Default constructor
+  // post: this List is empty.
+  List();
 
-	// Copy constructor
-	// post: this List now stores a copy of the sequence stored
-	//         in other
-	List(const List & other);
+  // Copy constructor
+  // post: this List now stores a copy of the sequence stored
+  //         in other
+  List(const List & other);
 
-	// Destructor
-	// post: all the Nodes of this List have been destroyed.
-	~List();
+  // Destructor
+  // post: all the Nodes of this List have been destroyed.
+  ~List();
 
-	// Assignment operator
-	// post: this List now stores a copy of the sequence stored
-	//         in other
-	const List & operator=(const List & other);
+  // Assignment operator
+  // post: this List now stores a copy of the sequence stored
+  //         in other
+  const List & operator=(const List & other);
 
-	// Test for equality
-	bool operator==(const List &rhs);
+  // Test for equality
+  bool operator==(const List &rhs);
 
-	//*** Accessors ***
+  //*** Accessors ***
 
-	// post: true has been returned just if this List is
-	//         empty.
-	bool empty() const;
+  // post: true has been returned just if this List is
+  //         empty.
+  bool empty() const;
 
-	// post: the doubles in this List have been written to
-	//         outfile.
-	void print(ostream & outfile) const;
-	
-	int size() const; // ADDED FOR TASK 1
-	double sum() const; // ADDED FOR TASK 4
+  // post: the doubles in this List have been written to
+  //         outfile.
+  void print(ostream & outfile) const;
 
-	//*** Mutators ***
+  int size() const; // Dynamically calculates the size.
+  double sum() const; // Dynamically calculates the sum.
 
-	// post: x has been added as the first double in this
-	//         List.
-	void insertAsFirst(double x);
-	void insertAsLast(double x);  // ADDED FOR TASK 5
-	// pre:  this List is not empty.
-	// post: the first double in this List has been removed
-	//         from this List and has been returned.
-	double removeFirst();
-	
-	
-private:
-	//*** Inaccessible standard functions ***
+  //*** Mutators ***
 
+  // post: x has been added as the first double in this
+  //         List.
+  void insertAsFirst(double x);
+  void insertAsLast(double x);  // ADDED FOR TASK 5
+  // pre:  this List is not empty.
+  // post: the first double in this List has been removed
+  //         from this List and has been returned.
+  double removeFirst();
 
-	//*** Helper functions ***
-	// process part of the linked structure
-
-	// post: a pointer to a copy of the linked structure
-	//         targeted by ptr has been returned.
-	static Node * clone(Node * ptr);
-	
 
 private:
-	Node * first_;
-	
+  //*** Inaccessible standard functions ***
+
+
+  //*** Helper functions ***
+  // process part of the linked structure
+
+  // post: a pointer to a copy of the linked structure
+  //         targeted by ptr has been returned.
+  static Node * clone(Node * ptr);
+
+  double stored_sum; // The sum implemented using a stored variable.
+  int stored_size;  // The size implemented using a stored variable.
+
+private:
+  Node * first_;
+
 };
 
 
